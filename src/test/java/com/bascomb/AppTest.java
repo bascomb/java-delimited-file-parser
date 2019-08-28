@@ -22,13 +22,13 @@ import java.util.List;
 public class AppTest 
 {
 
-    String path = "src/main/resources/test-tab-delimited-file.tab";
+    String path = "src/test/resources/test-space-delimited.fixed";
     /**
-     * test-tab-delimited-file.tab
+     * test-space-delimited.fixed
      */
     @Test
     public void testTabDelimitedFile() throws IOException {
-        File file = new File("src/main/resources/test-tab-delimited-file.tab");
+        File file = new File("src/test/resources/test-space-delimited.fixed");
         System.out.println(file.toPath());
         List<String> lines = FileUtils.readLines(file, "UTF-8");
         List<String> expectedLines = new ArrayList<String>();

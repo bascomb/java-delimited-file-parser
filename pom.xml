@@ -12,6 +12,12 @@
   <name>java-delimited-file-parser</name>
   <url>https://github.com/bascomb/java-delimited-file-parser</url>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.6.RELEASE</version>
+  </parent>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -113,6 +119,10 @@
               <argument></argument>
             </arguments>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
         </plugin>
       </plugins>
     </pluginManagement>

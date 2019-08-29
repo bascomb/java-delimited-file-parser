@@ -32,8 +32,7 @@ public class AppTest
         System.out.println(file.toPath());
         List<String> lines = FileUtils.readLines(file, "UTF-8");
         List<String> expectedLines = new ArrayList<String>();
-        expectedLines.add("This    is  a   test");
-        expectedLines.add("This    is  also    a   test");
+        expectedLines.add("This is a test");
         for(int i = 0; i < lines.size(); i++) {
             assertEquals(lines.get(i), expectedLines.get(i));
         }

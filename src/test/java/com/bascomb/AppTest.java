@@ -44,10 +44,11 @@ public class AppTest
         Files file = new DelimitedFile(this.path);
         String tokens[] = {"This", "is", "a", "test"};
         List<String> expectedTokens = Arrays.asList(tokens);
+        List<String> actualTokens = file.readLine();
+        System.out.println("Expected" + expectedTokens);
+        System.out.println("Actual - " + actualTokens);
 
-        System.out.println("Line As List - " + expectedTokens);
-
-        assertEquals(expectedTokens, file.readLine());
+        assertEquals(expectedTokens, actualTokens);
     }
 
 }

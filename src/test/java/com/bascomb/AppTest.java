@@ -22,13 +22,31 @@ import java.util.List;
 public class AppTest 
 {
 
-    String path = "src/test/resources/test-space-delimited.fixed";
+    String path = "src/test/resources/test-space-delimited.space";
+
     /**
-     * test-space-delimited.fixed
+     * Test no argument provided throughs excpetion
+     */
+    @Test(expected = RuntimeException.class)
+    public void testNoArgument() {
+        App.main(new String[1]);
+    }
+
+
+    /**
+     * Test path invalid throws runtime exception.
+     */
+    @Test(expected = NullPointerException.class)
+    public void testNoArgument() {
+        App.main(new String[1]);
+    }
+
+    /**
+     * test-space-delimited.space
      */
     @Test
     public void testTabDelimitedFile() throws IOException {
-        File file = new File("src/test/resources/test-space-delimited.fixed");
+        File file = new File("src/test/resources/test-space-delimited.space");
         System.out.println(file.toPath());
         List<String> lines = FileUtils.readLines(file, "UTF-8");
         List<String> expectedLines = new ArrayList<String>();
@@ -40,6 +58,18 @@ public class AppTest
 
     @Test
     public void testReadLineMethod() {
+        Files file = new DelimitedFile(this.path);
+        String tokens[] = {"This", "is", "a", "test"};
+        List<String> expectedTokens = Arrays.asList(tokens);
+        List<String> actualTokens = file.readLine();
+        System.out.println("Expected" + expectedTokens);
+        System.out.println("Actual - " + actualTokens);
+
+        assertEquals(expectedTokens, actualTokens);
+    }
+
+    @Test
+    public void testGetExtension() {
         Files file = new DelimitedFile(this.path);
         String tokens[] = {"This", "is", "a", "test"};
         List<String> expectedTokens = Arrays.asList(tokens);

@@ -6,18 +6,22 @@ import org.apache.commons.io.LineIterator;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 public abstract class Files {
 
+    private static Map<String, String> extensionDelimiterMap = getMap();;
 
     public Files(String path) {
-        this.extension = "tab";
+        this.extension = path.substring(path.lastIndexOf('.')+1);
         this.path = path;
-        this.delimiter = "\t";
-        this.lines = new ArrayList<String>();
+        this.delimiter = getDelimiterFromExt(extension);
+        this.allLines = new ArrayList<List<String>>();
         this.file = new File(this.path);
         this.lineIndex = 0;
         try {
@@ -25,6 +29,36 @@ public abstract class Files {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Get map representing mapping of file extensions to delimiters.
+     * Key is extension.
+     * @return HashMap representation populated with data.
+     */
+    private static Map<String,String> getMap() {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("tab", "\t");
+        map.put("csv", ",");
+        map.put("fixed", " ");
+        map.put("pipe", "|");
+        map.put("space", " ");
+
+        return map;
+    }
+
+    /**
+     * This method maps an extension to a delimiter that can be used to parse the file.
+     * @param extension
+     * @return String representing delimiter.
+     */
+    private String getDelimiterFromExt(String extension) {
+        if(extensionDelimiterMap.containsKey(extension)) {
+            String delimiter = extensionDelimiterMap.get(extension);
+        } else {
+            throw new RuntimeException("Extension not found.");
+        }
+        return delimiter;
     }
 
     private int lineIndex;
@@ -51,14 +85,16 @@ public abstract class Files {
     /**
      * List of lines in File. New lines are added as they are read.
      */
-    private List<String> lines;
+    private List<List<String>> allLines;
 
     /**
      * This method is used to read the next line from a file as a list of tokens.
      * @return Returns next line as a List of Strings
      */
     public List<String> readLine() {
-        return readLineAsList(ReadLineAsString());
+        List<String> line = readLineAsList(ReadLineAsString());
+        allLines.add(line);
+        return line;
     }
 
     public Integer getCurrentLineNumber() {

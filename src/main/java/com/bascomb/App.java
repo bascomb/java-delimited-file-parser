@@ -13,20 +13,16 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        FileParser fileParser = new FileParser();
-
+    public static void main( String[] args ) throws IOException {
+        parseFile(args);
     }
 
-    private void startApplication () {
-        String path = args[0];
-        System.out.println(path);
-        File file = new File(path);
-        try {
-            List<String> lines = FileUtils.readLines(file, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private static void parseFile(String[] args) throws IOException {
+        String path;
+        if(args.length != 1) throw new IllegalArgumentException("You must provide one argument which is a valid path to a file.");
+        path = args[0];
+        FileParser fileParser;
+        fileParser = new FileParser(path);
+        fileParser.getNextLineAsTokens();
     }
 }

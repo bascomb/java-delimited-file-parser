@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.text.StringTokenizer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class    DelimitedFile extends Files{
 
 
 
-    public DelimitedFile(String arg) {
+    public DelimitedFile(String arg) throws IOException {
         super(arg);
     }
 

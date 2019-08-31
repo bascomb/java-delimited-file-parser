@@ -5,6 +5,7 @@ import com.bascomb.files.DelimitedFile;
 import com.bascomb.files.Files;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +42,7 @@ public class TestExtensionMapping {
         fail("Not yet implemented");    }
 
     @Test
-    public void testSpace() {
+    public void testSpace() throws IOException {
         Files file = new DelimitedFile(extMap.get("space"));
         String tokens[] = {"This", "is", "a", "test"};
         List<String> expectedTokens = Arrays.asList(tokens);

@@ -25,23 +25,6 @@ public class AppTest
     String path = "src/test/resources/test-space-delimited.space";
 
     /**
-     * Test no argument provided throughs excpetion
-     */
-    @Test(expected = RuntimeException.class)
-    public void testNoArgument() {
-        App.main(new String[1]);
-    }
-
-
-    /**
-     * Test path invalid throws runtime exception.
-     */
-    @Test(expected = NullPointerException.class)
-    public void testNoArgument() {
-        App.main(new String[1]);
-    }
-
-    /**
      * test-space-delimited.space
      */
     @Test
@@ -57,7 +40,7 @@ public class AppTest
     }
 
     @Test
-    public void testReadLineMethod() {
+    public void testReadLineMethod() throws IOException {
         Files file = new DelimitedFile(this.path);
         String tokens[] = {"This", "is", "a", "test"};
         List<String> expectedTokens = Arrays.asList(tokens);
@@ -69,7 +52,7 @@ public class AppTest
     }
 
     @Test
-    public void testGetExtension() {
+    public void testGetExtension() throws IOException {
         Files file = new DelimitedFile(this.path);
         String tokens[] = {"This", "is", "a", "test"};
         List<String> expectedTokens = Arrays.asList(tokens);

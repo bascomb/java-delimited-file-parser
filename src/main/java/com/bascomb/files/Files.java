@@ -17,18 +17,14 @@ public abstract class Files {
 
     private static Map<String, String> extensionDelimiterMap = getMap();;
 
-    public Files(String path) {
+    public Files(String path) throws IOException {
         this.extension = path.substring(path.lastIndexOf('.')+1);
         this.path = path;
         this.delimiter = getDelimiterFromExt(extension);
         this.allLines = new ArrayList<List<String>>();
         this.file = new File(this.path);
         this.lineIndex = 0;
-        try {
-            this.it = FileUtils.lineIterator(file, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.it = FileUtils.lineIterator(file, "UTF-8");
     }
 
     /**

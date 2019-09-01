@@ -29,13 +29,13 @@ public class TestUnivocityParser {
     @Test
     public void testFixedWidth() {
         // creates the sequence of field lengths in the file to be parsed
-        FixedWidthFields lengths = new FixedWidthFields(4, 5, 40, 40, 8);
+        FixedWidthFields lengths = new FixedWidthFields(5,3,2,5);
 
 // creates the default settings for a fixed width parser
         FixedWidthParserSettings settings = new FixedWidthParserSettings(lengths);
 
 //sets the character used for padding unwritten spaces in the file
-        settings.getFormat().setPadding('_');
+        settings.getFormat().setPadding(' ');
         settings.getFormat().setLineSeparator("\n");
 
 // creates a fixed-width parser with the given settings

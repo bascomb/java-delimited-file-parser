@@ -12,6 +12,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class represents an abstraction of a File Object that is be to read.
+ *
+ * All file objects have the following attributes:
+ * Extension
+ * Path
+ * Delimiter - Delimiters are mapped from the extensions.
+ * Extension to delimiter mapping is hard coded into this file.
+ * and represented by extensionDelimiterMap attribute.
+ * Lines as Tokens
+ * List All Lines in file
+ *
+ * All file objects implement the following functionality:
+ * Ability to know if there is a next line to read.
+ * Ability to read that next line as Tokens List.
+ */
 @Data
 public abstract class Files {
 
@@ -49,8 +65,9 @@ public abstract class Files {
      * @return String representing delimiter.
      */
     private String getDelimiterFromExt(String extension) {
+        String delimiter;
         if(extensionDelimiterMap.containsKey(extension)) {
-            String delimiter = extensionDelimiterMap.get(extension);
+            delimiter = extensionDelimiterMap.get(extension);
         } else {
             throw new RuntimeException("Extension not found.");
         }
@@ -110,7 +127,7 @@ public abstract class Files {
         else throw new RuntimeException("End of File");
     }
 
-    private boolean hasNextLine() {
+    public boolean hasNextLine() {
         return it.hasNext();
     }
 

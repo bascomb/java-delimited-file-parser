@@ -19,6 +19,7 @@ public class TestExtensionMapping {
 
     static {
         extMap.put("space", "src/test/resources/test-space-delimited.space");
+        extMap.put("space", "src/test/resources/test-space-delimited.fixed");
     }
 
     @Test
@@ -37,10 +38,23 @@ public class TestExtensionMapping {
         fail("Not yet implemented");   }
 
     @Test
-    public void testFixed() {
+    public void testFixed() throws IOException {
 
-        fail("Not yet implemented");    }
+        Files file = new DelimitedFile(extMap.get("fixed"));
+        String tokens[] = {"This", "is", "a", "test"};
+        List<String> expectedTokens = Arrays.asList(tokens);
+        List<String> actualTokens = file.readLine();
+        System.out.println("Expected" + expectedTokens);
+        System.out.println("Actual - " + actualTokens);
 
+        assertEquals(expectedTokens, actualTokens);
+    }
+
+    /**
+     * Tests single space delimited file.
+     * Expects a list of tokens representing the first line of the file.
+     * @throws IOException
+     */
     @Test
     public void testSpace() throws IOException {
         Files file = new DelimitedFile(extMap.get("space"));

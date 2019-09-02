@@ -5,11 +5,14 @@ import com.bascomb.application.fileparser.DelimitedFileParser;
 import com.bascomb.application.fileparser.FileParser;
 import com.bascomb.application.fileparser.FixedWidthFileParser;
 import com.bascomb.application.helper.Helper;
+import com.bascomb.application.helper.UserMessages;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * Processes user input and interfaces with parser.
+ * Controls flow of parsing a given file line by line.
+ * Handles User Input for defining parsing parameters.
  */
 public class Controller {
 
@@ -18,7 +21,12 @@ public class Controller {
     String path;
     Scanner scanner;
 
-    public Controller(String path) {
+    /**
+     * Initializes Controller with file to parse.
+     *
+     * @param path Path of file to parse.
+     */
+    public Controller(String path) throws IOException {
         this.path = path;
         file = new ParsableFile(path); //throws exception. empty file. bad path.
         scanner = new Scanner(System.in);
@@ -61,6 +69,9 @@ public class Controller {
         UserMessages.endOfFile();
     }
 
+    /**
+     * Parses file line by line as instructed by user.
+     */
     private void parseFile() {
         while (file.hasNext()) {
             UserMessages.promptNextLine();

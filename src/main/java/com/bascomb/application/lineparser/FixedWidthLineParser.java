@@ -4,15 +4,30 @@ import com.univocity.parsers.fixed.FixedWidthFields;
 import com.univocity.parsers.fixed.FixedWidthParser;
 import com.univocity.parsers.fixed.FixedWidthParserSettings;
 
+/**
+ * Parses a line of text formatted in fixed width.
+ */
 public class FixedWidthLineParser implements LineParser {
 
     private final int[] fixedWidthVals;
 
+    /**
+     * Initializes the format of the fixed width.
+     *
+     * @param fixedWidthVals fixed width intervals
+     */
     public FixedWidthLineParser(int[] fixedWidthVals) {
         this.fixedWidthVals = fixedWidthVals;
     }
 
-    //TODO
+    /**
+     * Gets the tokens of the given text formatted in fixed widths.
+     * Padding is set to blank space.
+     * Line Separator is new line.
+     *
+     * @param nextLine Input String representing fixed width text.
+     * @return Fixed Width Tokens in String array.
+     */
     @Override
     public String[] getTokens(String nextLine) {
         // creates the sequence of field lengths in the file to be parsed

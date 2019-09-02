@@ -1,25 +1,22 @@
 package com.bascomb.test.tsvtest;
 
-import com.bascomb.application.App;
 import com.bascomb.application.file.ParsableFile;
 import com.bascomb.application.fileparser.DelimitedFileParser;
 import com.bascomb.application.fileparser.FileParser;
-import com.bascomb.application.fileparser.FixedWidthFileParser;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.assertEquals;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-public class positive {
+public class TSVTests {
 
     /**
      *
      */
     @Test
-    public void testTsvParse() {
+    public void testTsvParse() throws IOException {
 
         FileParser fileParser = new DelimitedFileParser("\t");
         String[] expected = {"This", "is", "a", "test"};
@@ -27,5 +24,14 @@ public class positive {
         ParsableFile file = new ParsableFile(path);
         String[] actual = fileParser.getTokens(file.nextLine());
         assertEquals(expected, actual);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testEmptyFile() throws IOException {
+
+        FileParser fileParser = new DelimitedFileParser("\t");
+        String path = "src/test/resources/emptyfile.txt";
+        ParsableFile file = new ParsableFile(path);
+        String[] actual = fileParser.getTokens(file.nextLine());
     }
 }

@@ -86,7 +86,7 @@
                         <archive>
                             <manifest>
                                 <addClasspath>true</addClasspath>
-                                <mainClass>com.bascomb.App</mainClass>
+                                <mainClass>com.bascomb.application.App</mainClass>
                             </manifest>
                         </archive>
                     </configuration>

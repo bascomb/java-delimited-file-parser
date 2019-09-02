@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-public class CLI {
+public class NoFileProvidedTest {
     /**
      * Test no argument provided throws excpetion
      */

@@ -1,9 +1,8 @@
 package com.bascomb.application.lineparser;
 
-import com.univocity.parsers.tsv.TsvParser;
-import com.univocity.parsers.tsv.TsvParserSettings;
+import com.univocity.parsers.csv.CsvParser;
+import com.univocity.parsers.csv.CsvParserSettings;
 
-// Parses Strings that are delimited.
 public class DelimitedLineParser implements LineParser {
 
     private final String delimiter;
@@ -12,14 +11,18 @@ public class DelimitedLineParser implements LineParser {
         this.delimiter = delimiter;
     }
 
-    //TODO
+    /**
+     * Gets the tokens from a String of text based on the delimiter.
+     *
+     * @param nextLine Input String representing line of delimited text.
+     * @return String array of delimited tokens.
+     */
     @Override
     public String[] getTokens(String nextLine) {
-        //return new String[] {"This","is"};
-        //Implement logic to parse string with delimiter.
-        TsvParserSettings settings = new TsvParserSettings();
+        CsvParserSettings settings = new CsvParserSettings();
         settings.getFormat().setLineSeparator("\n");
-        TsvParser parser = new TsvParser(settings);
+        settings.getFormat().setDelimiter(delimiter);
+        CsvParser parser = new CsvParser(settings);
         return parser.parseLine(nextLine);
     }
 }

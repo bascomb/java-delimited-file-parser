@@ -1,4 +1,4 @@
-package com.bascomb.application;
+package com.bascomb.application.cli;
 
 
 public class UserInterface {

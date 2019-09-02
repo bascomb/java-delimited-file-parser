@@ -1,11 +1,10 @@
-package com.bascomb.application;
+package com.bascomb.application.file;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 
 //File to be parsed.
 //Interface to file contents.
@@ -15,7 +14,7 @@ public class ParsableFile {
 
     LineIterator it;
 
-            //TODO
+    //TODO
     public ParsableFile(String path) {
         file = new File(path);
         try {

@@ -1,4 +1,4 @@
-package com.bascomb.application;
+package com.bascomb.application.cli;
 
 import java.util.Arrays;
 
@@ -8,6 +8,7 @@ public class UserMessages {
     public static void welcome() {
         System.out.println("Welcome to the User Interface for the File Parser API.");
     }
+
     public static void promptFile() {
         System.out.println("Enter File to Parse: ");
     }
@@ -20,11 +21,6 @@ public class UserMessages {
         System.out.println("Provide Fixed Width Values : ");
     }
 
-
-    private void promptStrategy() {
-        System.out.println("Strategy?");
-    }
-
     static void promptNextLine() {
         System.out.println("Get next line?");
     }
@@ -35,5 +31,9 @@ public class UserMessages {
 
     static void endOfFile() {
         System.out.println("End of File.");
+    }
+
+    private void promptStrategy() {
+        System.out.println("Strategy?");
     }
 }

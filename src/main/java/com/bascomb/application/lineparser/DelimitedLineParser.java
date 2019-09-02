@@ -1,16 +1,14 @@
-package com.bascomb.application;
+package com.bascomb.application.lineparser;
 
 import com.univocity.parsers.tsv.TsvParser;
 import com.univocity.parsers.tsv.TsvParserSettings;
 
-import java.io.File;
-
 // Parses Strings that are delimited.
-public class DelimitedParser implements Parser {
+public class DelimitedLineParser implements LineParser {
 
     private final String delimiter;
 
-    public DelimitedParser(String delimiter) {
+    public DelimitedLineParser(String delimiter) {
         this.delimiter = delimiter;
     }
 

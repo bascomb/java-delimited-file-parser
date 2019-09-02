@@ -120,7 +120,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <mainClass>com.bascomb.App</mainClass>
+                        <mainClass>com.bascomb.application.App</mainClass>
                         <arguments>
                             <argument></argument>
                         </arguments>

@@ -1,5 +1,9 @@
 #java-delimited-file-parser
 
+To Execute Program run the following from root project directory..
+mvn exec:java -Dexec.args="/Users/bas/Projects/git/java-delimited-file-parser/src/test/resources/test-csv-file.csv"
+
+#
 We like to give our candidates the opportunity to do what they do best, code. Below is an exercise we have used quite successfully over the past few years to hire great engineers. Please review, complete the exercise, and return to me.
 
 We are going to score exercises on criteria like cleanliness, structure of code, correctness (we hope engineers actually run the code and test that it works), extensibility of design, data structure, efficiency in the solution, etc. We are firm believers in sound engineering principles and elegant coding solutions.

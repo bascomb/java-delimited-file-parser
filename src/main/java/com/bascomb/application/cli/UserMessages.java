@@ -18,7 +18,7 @@ public class UserMessages {
     }
 
     public static void promptFixedWidthValues() {
-        System.out.println("Provide Fixed Width Values : ");
+        System.out.println("Provide Fixed Width Values (eg '5 5 5 5' : ");
     }
 
     static void promptNextLine() {
@@ -31,6 +31,14 @@ public class UserMessages {
 
     static void endOfFile() {
         System.out.println("End of File.");
+    }
+
+    public static void promptFixedWidthCount() {
+        System.out.println("How many integers do you want in the array?");
+    }
+
+    public static void ErrorBooleanExpected() {
+        System.out.println("Please input a boolean value");
     }
 
     private void promptStrategy() {

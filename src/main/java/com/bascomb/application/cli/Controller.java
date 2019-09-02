@@ -4,7 +4,6 @@ import com.bascomb.application.file.ParsableFile;
 import com.bascomb.application.fileparser.DelimitedFileParser;
 import com.bascomb.application.fileparser.FileParser;
 import com.bascomb.application.fileparser.FixedWidthFileParser;
-import com.bascomb.application.format.Format;
 import com.bascomb.application.helper.Helper;
 
 import java.util.Scanner;
@@ -14,46 +13,46 @@ import java.util.Scanner;
  */
 public class Controller {
 
+    ParsableFile file;
+    FileParser fileParser;
+    String path;
+    Scanner scanner;
+
     public Controller(String path) {
         this.path = path;
         file = new ParsableFile(path); //throws exception. empty file. bad path.
         scanner = new Scanner(System.in);
     }
 
-    ParsableFile file;
-    FileParser fileParser;
-    String path;
-    Scanner scanner;
-
     //Application Flow
     public void execute() {
+        boolean isFixedWidth = false;
 
         UserMessages.welcome();
         UserMessages.promptIsFixedWidth();
-        boolean isFixedWidith = false;
+
         if (scanner.hasNextBoolean()) { //throws exception. invalid format.
-            isFixedWidith = scanner.nextBoolean();
+            isFixedWidth = scanner.nextBoolean();
         } else {
-            System.out.println("Please input a boolean value");
+            UserMessages.ErrorBooleanExpected();
         }
 
-        if (isFixedWidith) {
-            UserMessages.promptFixedWidthValues(); //TODO
-            System.out.println("hoW many integeres do you want in the array?");
-            //Integer[] fixedWidthVals = null; //TODO
+        if (isFixedWidth) {
+            UserMessages.promptFixedWidthCount();
             int count = scanner.nextInt();
-            System.out.println("count is: " + count);
             int[] fixedWidthVals = new int[count];
-            for (int i = 0; i < count; i++)
-                fixedWidthVals[i] = scanner.nextInt();
 
-            //format = new FixedWidthFormat(fixedWidthVals);//TODO
+            UserMessages.promptFixedWidthValues();
+            for (int i = 0; i < count; i++) {
+                fixedWidthVals[i] = scanner.nextInt();
+            }
+
             fileParser = new FixedWidthFileParser(fixedWidthVals);
 
         } else {
             //derive extension
             String delimiter = Helper.deriveDelimiter(path);
-            //format = new ExtensionFormat(delimiter); //TODO
+
             fileParser = new DelimitedFileParser(delimiter);
         }
 

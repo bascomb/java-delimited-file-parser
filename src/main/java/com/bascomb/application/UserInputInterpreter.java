@@ -1,4 +1,4 @@
-package com.bascomb;
+package com.bascomb.application;
 
 import java.util.Scanner;
 
@@ -8,9 +8,10 @@ public class UserInputInterpreter {
         scanner = new Scanner(System.in);
     }
 
-    private Scanner scanner;
+    private static Scanner scanner;
 
-    public String getNext() {
+    public static String getNext() {
+
         return scanner.next();
     }
 

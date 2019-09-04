@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
+ * API Client
  * Controls flow of parsing a given file line by line.
  * Handles User Input for defining parsing parameters.
  */

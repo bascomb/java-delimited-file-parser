@@ -21,7 +21,6 @@ public class Helper {
         Map<String, String> map = new HashMap<String, String>();
         map.put("tab", "\t");
         map.put("csv", ",");
-        map.put("fixed", " ");
         map.put("pipe", "|");
         map.put("space", " ");
 

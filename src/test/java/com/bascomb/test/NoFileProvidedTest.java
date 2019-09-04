@@ -1,6 +1,6 @@
 package com.bascomb.test;
 
-import com.bascomb.application.App;
+import com.bascomb.application.AppConfig;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class NoFileProvidedTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNoArgument() throws IOException {
-        App.main(new String[0]);
+        AppConfig.main(new String[0]);
     }
 
 }

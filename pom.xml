@@ -13,9 +13,10 @@
     <url>https://github.com/bascomb/java-delimited-file-parser</url>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>Cairo-SR8</version>
+        <relativePath/>
     </parent>
 
     <properties>
@@ -25,6 +26,14 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -60,6 +69,10 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -102,7 +115,7 @@
                         <archive>
                             <manifest>
                                 <addClasspath>true</addClasspath>
-                                <mainClass>com.bascomb.application.App</mainClass>
+                                <mainClass>com.bascomb.application.AppConfig</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
@@ -136,7 +149,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <mainClass>com.bascomb.application.App</mainClass>
+                        <mainClass>com.bascomb.application.AppConfig</mainClass>
                         <arguments>
                             <argument></argument>
                         </arguments>

@@ -6,6 +6,8 @@ import com.bascomb.application.fileparser.FileParser;
 import com.bascomb.application.fileparser.FixedWidthFileParser;
 import com.bascomb.application.helper.Helper;
 import com.bascomb.application.helper.UserMessages;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -15,6 +17,7 @@ import java.util.Scanner;
  * Controls flow of parsing a given file line by line.
  * Handles User Input for defining parsing parameters.
  */
+@Component
 public class Controller {
 
     ParsableFile file;
@@ -25,12 +28,9 @@ public class Controller {
     /**
      * Initializes Controller with file to parse.
      *
-     * @param path Path of file to parse.
      */
-    public Controller(String path) throws IOException {
-        this.path = path;
-        file = new ParsableFile(path); //throws exception. empty file. bad path.
-        scanner = new Scanner(System.in);
+    @Autowired
+    public Controller() throws IOException {
     }
 
     //Application Flow
@@ -81,4 +81,9 @@ public class Controller {
         }
     }
 
+    public void initialize(String path) throws IOException {
+        this.path = path;
+        file = new ParsableFile(path); //throws exception. empty file. bad path.
+        scanner = new Scanner(System.in);
+    }
 }

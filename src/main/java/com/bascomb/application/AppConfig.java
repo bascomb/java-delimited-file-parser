@@ -1,6 +1,10 @@
 package com.bascomb.application;
 
 import com.bascomb.application.cli.Controller;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 
@@ -21,7 +25,9 @@ import java.io.IOException;
  *
  * @author bascomb.arnette
  */
-public class App {
+@Configuration
+@ComponentScan(basePackages = "com.bascomb.application")
+public class AppConfig {
 
     /**
      * Starts application for parsing provided file.
@@ -32,7 +38,10 @@ public class App {
     public static void main(String[] args) throws IOException {
         if (args.length != 1)
             throw new IllegalArgumentException("You must provide one argument which is a valid path to a file.");
-        Controller controller = new Controller(args[0]);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        Controller controller = context.getBean(Controller.class);
+        //Controller controller = new Controller(args[0]);
+        controller.initialize(args[0]);
         controller.execute();
     }
 }

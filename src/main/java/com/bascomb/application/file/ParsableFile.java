@@ -2,6 +2,7 @@ package com.bascomb.application.file;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;

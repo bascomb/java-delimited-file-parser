@@ -1,22 +1,42 @@
 package com.bascomb.application.fileparser;
 
+import com.bascomb.application.file.ParsableFile;
 import com.bascomb.application.lineparser.DelimitedLineParser;
+import com.bascomb.application.lineparser.LineParser;
+
+import java.io.IOException;
 
 /**
  * File parser for parsing delimited text files.
  * Extends FileParser.
  * Delimiter field defines delimiter of tokens.
  */
-public class DelimitedFileParser extends FileParser {
+public class DelimitedFileParser implements FileParser {
 
-    String delimiter;
+    private String delimiter;
+    private final LineParser lineParser;
+    //Fixed width formatting
+    private ParsableFile file;
+
+    public DelimitedFileParser(String path, String delimiter) throws IOException {
+        this.delimiter = delimiter;
+        this.lineParser = new DelimitedLineParser(delimiter);
+        this.file = new ParsableFile(path);
+    }
+
+    @Override
+    public String[] getNextLine() {
+        return lineParser.getTokens(file.nextLine());
+    }
+
+    @Override
+    public boolean hasNext() {
+        return file.hasNext();
+    }
 
     /**
      * Initializes delimiter format and sets LineParser to DelimitedLineParser.
      *
      * @param delimiter
      */
-    public DelimitedFileParser(String delimiter) {
-        this.lineParser = new DelimitedLineParser(delimiter);
-    }
 }

@@ -3,6 +3,9 @@ package com.bascomb.test.fixedwidth;
 import com.bascomb.application.file.ParsableFile;
 import com.bascomb.application.fileparser.FileParser;
 import com.bascomb.application.fileparser.FixedWidthFileParser;
+import com.bascomb.application.lineparser.FixedWidthLineParser;
+import com.bascomb.application.lineparser.LineParser;
+import javafx.scene.shape.HLineTo;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,11 +16,11 @@ public class FixedWidthTests {
 
     @Test
     public void testFixedWidth() throws IOException {
-        FileParser fileParser = new FixedWidthFileParser(new int[]{2, 2, 2, 2});
+        int[] widths = new int[]{2, 2, 2, 2};
         String[] expected = {"AA", "BB", "CC", "DD"};
-        String path = "src/test/resources/test-fixed-width.fw";
-        ParsableFile file = new ParsableFile(path);
-        String[] actual = fileParser.getTokens(file.nextLine());
+        String line = "AABBCCDD";
+        LineParser lineParser = new FixedWidthLineParser(widths);
+        String[] actual = lineParser.getTokens(line);
         assertEquals(expected, actual);
     }
 }

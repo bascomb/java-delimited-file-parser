@@ -29,12 +29,12 @@ public class Controller {
      */
     public Controller(String path) throws IOException {
         this.path = path;
-        file = new ParsableFile(path); //throws exception. empty file. bad path.
+
         scanner = new Scanner(System.in);
     }
 
     //Application Flow
-    public void execute() {
+    public void execute() throws IOException {
         boolean isFixedWidth = false;
 
         UserMessages.welcome();
@@ -56,13 +56,13 @@ public class Controller {
                 fixedWidthVals[i] = scanner.nextInt();
             }
 
-            fileParser = new FixedWidthFileParser(fixedWidthVals);
+            fileParser = new FixedWidthFileParser(path, fixedWidthVals);
 
         } else {
             //derive extension
             String delimiter = Helper.deriveDelimiter(path);
 
-            fileParser = new DelimitedFileParser(delimiter);
+            fileParser = new DelimitedFileParser(path, delimiter);
         }
 
         parseFile();
@@ -74,10 +74,10 @@ public class Controller {
      * Parses file line by line as instructed by user.
      */
     private void parseFile() {
-        while (file.hasNext()) {
+        while (fileParser.hasNext()) {
             UserMessages.promptNextLine();
             scanner.nextLine();
-            UserMessages.printTokens(fileParser.getTokens(file.nextLine())); //throws exception
+            UserMessages.printTokens(fileParser.getNextLine()); //throws exception
         }
     }
 

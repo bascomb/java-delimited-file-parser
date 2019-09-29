@@ -1,3 +1,8 @@
+#Notes:
+Version 2 - Redesign API. Create FileParser interface that takes a file and returns lines.
+(Master Branch - Current Commit: 9e0c46ff)
+git branch -b version2.0
+
 #java-delimited-file-parser
 
 To Execute Program run the following from root project directory..

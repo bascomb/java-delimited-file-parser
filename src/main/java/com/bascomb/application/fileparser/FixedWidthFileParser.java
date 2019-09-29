@@ -1,6 +1,6 @@
 package com.bascomb.application.fileparser;
 
-import com.bascomb.application.file.ParsableFile;
+import com.bascomb.application.file.IterableFile;
 import com.bascomb.application.lineparser.FixedWidthLineParser;
 import com.bascomb.application.lineparser.LineParser;
 
@@ -16,13 +16,13 @@ public class FixedWidthFileParser implements FileParser {
     private final LineParser lineParser;
     //Fixed width formatting
     private int[] fixedWidthVals;
-    private ParsableFile file;
+    private IterableFile file;
 
     public FixedWidthFileParser(String path, int[] fixedWidthVals) throws IOException {
         super();
         this.fixedWidthVals = fixedWidthVals;
         this.lineParser = new FixedWidthLineParser(fixedWidthVals);
-        this.file = new ParsableFile(path); //throws exception. empty file. bad path.
+        this.file = new IterableFile(path); //throws exception. empty file. bad path.
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.bascomb.test.delimitedfiles;
 
-import com.bascomb.application.file.ParsableFile;
 import com.bascomb.application.fileparser.DelimitedFileParser;
 import com.bascomb.application.fileparser.FileParser;
 import com.bascomb.application.fileparser.FixedWidthFileParser;

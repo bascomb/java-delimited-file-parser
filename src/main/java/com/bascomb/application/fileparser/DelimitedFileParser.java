@@ -1,6 +1,6 @@
 package com.bascomb.application.fileparser;
 
-import com.bascomb.application.file.ParsableFile;
+import com.bascomb.application.file.IterableFile;
 import com.bascomb.application.lineparser.DelimitedLineParser;
 import com.bascomb.application.lineparser.LineParser;
 
@@ -16,12 +16,12 @@ public class DelimitedFileParser implements FileParser {
     private String delimiter;
     private final LineParser lineParser;
     //Fixed width formatting
-    private ParsableFile file;
+    private IterableFile file;
 
     public DelimitedFileParser(String path, String delimiter) throws IOException {
         this.delimiter = delimiter;
         this.lineParser = new DelimitedLineParser(delimiter);
-        this.file = new ParsableFile(path);
+        this.file = new IterableFile(path);
     }
 
     @Override

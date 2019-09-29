@@ -1,11 +1,7 @@
 package com.bascomb.test.fixedwidth;
 
-import com.bascomb.application.file.ParsableFile;
-import com.bascomb.application.fileparser.FileParser;
-import com.bascomb.application.fileparser.FixedWidthFileParser;
 import com.bascomb.application.lineparser.FixedWidthLineParser;
 import com.bascomb.application.lineparser.LineParser;
-import javafx.scene.shape.HLineTo;
 import org.junit.Test;
 
 import java.io.IOException;

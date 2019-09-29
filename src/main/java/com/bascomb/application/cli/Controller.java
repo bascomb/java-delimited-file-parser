@@ -1,6 +1,6 @@
 package com.bascomb.application.cli;
 
-import com.bascomb.application.file.ParsableFile;
+import com.bascomb.application.file.IterableFile;
 import com.bascomb.application.fileparser.DelimitedFileParser;
 import com.bascomb.application.fileparser.FileParser;
 import com.bascomb.application.fileparser.FixedWidthFileParser;
@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class Controller {
 
-    ParsableFile file;
+    IterableFile file;
     FileParser fileParser;
     String path;
     Scanner scanner;

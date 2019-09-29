@@ -1,14 +1,10 @@
 package com.bascomb.test.delimitedfiles;
 
-import com.bascomb.application.file.ParsableFile;
-import com.bascomb.application.fileparser.DelimitedFileParser;
-import com.bascomb.application.fileparser.FileParser;
 import com.bascomb.application.lineparser.DelimitedLineParser;
 import com.bascomb.application.lineparser.LineParser;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
 

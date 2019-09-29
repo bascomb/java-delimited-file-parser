@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Represents a File that is parsable by the application.
  */
-public class ParsableFile {
+public class IterableFile {
 
     File file;
 
@@ -25,7 +25,7 @@ public class ParsableFile {
      * @param path File path
      * @throws IOException if iterator cannot be set.
      */
-    public ParsableFile(String path) throws IOException {
+    public IterableFile(String path) throws IOException {
         file = new File(path);
         it = FileUtils.lineIterator(file, "UTF-8");
     }
